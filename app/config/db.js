@@ -7,8 +7,8 @@ module.exports = function (app) {
   Model.knex(knex);
 
   app.models = require('require-all')({
-    dirname     :  __dirname + '/../models',
-    recursive   : false
+    dirname: __dirname + '/../models',
+    recursive: false
   });
   app.knex = knex;
 };

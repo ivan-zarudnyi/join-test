@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./index.js",
+    "start": "node ./bin/server.js",
+    "start-jobs": "node ./bin/start-jobs.js",
     "test": "mocha --recursive --exit",
     "init-db": "./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js migrate:latest  && ./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js seed:run"
   },
