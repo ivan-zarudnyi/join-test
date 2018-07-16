@@ -7,10 +7,9 @@
     "start": "node ./bin/server.js",
     "start-jobs": "node ./bin/start-jobs.js",
     "test": "mocha --recursive --exit",
-    "init-db": "./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js migrate:latest  && ./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js seed:run"
+    "init-db": "./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js migrate:latest && ./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js seed:run && ./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js migrate:latest --env test"
   },
   "dependencies": {
-    "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "knex": "latest",
@@ -23,8 +22,9 @@
     "strong-params": "^0.7.1"
   },
   "devDependencies": {
-    "chai-http": "^4.3.0",
     "chai": "latest",
+    "chai-http": "^4.3.0",
+    "factory-girl": "^5.0.4",
     "mocha": "latest"
   }
 }
