@@ -10,5 +10,5 @@ module.exports = function (app) {
     }
   });
 
-  app.logger = log4js.getLogger(app.name);
+  app.logger = log4js.getLogger(app.get('title'));
 };

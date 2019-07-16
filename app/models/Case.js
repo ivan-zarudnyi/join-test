@@ -17,7 +17,7 @@ class Case extends AbstractModel {
         id: {type: 'integer'},
         title: {type: 'string'},
         description: {type: 'string'},
-        state: {type: 'string', default: 'INITIAL', enum: _.values(Case.STATES)},
+        state: {type: 'string', default: Case.STATES.NEW, enum: _.values(Case.STATES)},
         close_reason: {type: 'string'},
         closed_at: {type: 'datetime'},
         officer_id: {type: 'integer'}
@@ -25,13 +25,15 @@ class Case extends AbstractModel {
     };
   }
 
-  static relationMappings = {
-    owner: {
-      relation: Model.BelongsToOneRelation,
-      modelClass: Officer,
-      join: {
-        from: 'cases.officer_id',
-        to: 'officers.id'
+  static get relationMappings() {
+    return {
+      owner: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Officer,
+        join: {
+          from: 'cases.officer_id',
+          to: 'officers.id'
+        }
       }
     }
   }

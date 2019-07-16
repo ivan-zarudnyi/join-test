@@ -2,7 +2,8 @@ const createError = require('http-errors');
 const express = require('express');
 const strongParams = require('strong-params');
 
-const app = express({name: 'stolen-bike-cases'});
+const app = express();
+app.set('title', 'stolen-bike-cases');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,7 +26,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   try {
-    err = JSON.stringify(err);
+    JSON.stringify(err); //avoid recursive json error
   } catch (e) {
     err = {message: '' + err};
   }
