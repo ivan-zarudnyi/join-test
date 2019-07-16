@@ -1,4 +1,6 @@
-class AbstractModel {
+const {Model} = require('objection');
+
+class AbstractModel extends Model {
 
 }
 

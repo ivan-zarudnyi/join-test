@@ -6,6 +6,8 @@ exports.up = function(knex) {
     table.string('state').notNull().defaultTo('NEW').index();
     table.integer('officer_id').index().references('id').inTable('officers').onDelete('SET NULL');
     table.string('description').notNull();
+    table.string('close_reason');
+    table.timestamp('closed_at');
     table.timestamps(true, true);
   });
 

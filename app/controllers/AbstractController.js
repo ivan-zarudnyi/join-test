@@ -1,15 +1,19 @@
 const _ = require('lodash');
 
 class AbstractController {
-  static action(method) {
-    const instance = new this();
-    if (!instance[method]) {
-      throw new Error(`Method ${method} not found in controller`);
-    }
+  constructor(req, res) {
+    this.req = req;
+    this.res = res;
+  }
 
+  static action(method) {
     return (req, res, next) => {
-      instance[method](req, res).then(() => {
-      }).catch(err => {
+      const instance = new this(req, res);
+      if (!instance[method]) {
+        throw new Error(`Method ${method} not found in controller`);
+      }
+
+      instance[method](req, res).then(() => {}).catch(err => {
         app.logger.error(err);
         next(err);
       });

@@ -1,13 +1,12 @@
 const createError = require('http-errors');
 const express = require('express');
-const logger = require('morgan');
-
+const strongParams = require('strong-params');
 
 const app = express({name: 'stolen-bike-cases'});
 
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(strongParams.expressMiddleware());
 
 const config = require('./app/config');
 config(app);
@@ -35,6 +34,7 @@ app.use(function(err, req, res, next) {
 });
 
 global.app = app;
+global._ = require('lodash');
 
 const http = require('http');
 
