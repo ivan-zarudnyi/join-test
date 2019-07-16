@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "node ./index.js",
-    "test": "mocha --recursive --exit"
+    "test": "mocha --recursive --exit",
+    "init-db": "./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js migrate:latest  && ./node_modules/knex/bin/cli.js --knexfile ./db/knexfile.js seed:run"
   },
   "dependencies": {
     "debug": "~2.6.9",
